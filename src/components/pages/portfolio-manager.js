@@ -37,10 +37,6 @@ export default class PortfolioManager extends Component {
         )
     }
 
-    portfolioItem() {
-
-    }
-
     componentDidMount() {
         this.getPortfolioItems()
     }
