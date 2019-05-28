@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-import PortfolioManagerItem from "../portfolio/portfolio-manager-item";
 import PortfolioForm from "../portfolio/portfolio-form";
+import PortfolioManagerItem from "../portfolio/portfolio-manager-item";
 
 export default class PortfolioManager extends Component {
   constructor() {
     super();
 
     this.state = {
-      data: []
+      portfolioItems: []
     };
 
     this.handleSuccessfulFormSubmission = this.handleSuccessfulFormSubmission.bind(
@@ -19,34 +19,31 @@ export default class PortfolioManager extends Component {
   }
 
   handleSuccessfulFormSubmission(portfolioItem) {
-    // TODO
-    // update the data state
-    // and add the portfolioItem to the list
+    this.setState({
+      portfolioItems: [portfolioItem].concat(this.state.portfolioItems)
+    });
   }
 
   handleFormSubmissionError(error) {
-    console.log("An error occured submitting the form: ", error);
+    console.log("handleFormSubmissionError error", error);
   }
 
-  getPortfolioItems = () => {
+  getPortfolioItems() {
     axios
-      .get("https://huntergreen.devcamp.space/portfolio/portfolio_items", {
-        withCredentials: true
-      })
+      .get(
+        "https://huntergreen.devcamp.space/portfolio/portfolio_items?order_by=created_at&direction=desc",
+        {
+          withCredentials: true
+        }
+      )
       .then(response => {
         this.setState({
-          data: response.data.portfolio_items
+          portfolioItems: [...response.data.portfolio_items]
         });
       })
       .catch(error => {
-        console.log("There was an error retrieving data from the api: ", error);
+        console.log("error in getPortfolioItems", error);
       });
-  };
-
-  renderPortfolioItems() {
-    return this.state.data.map(item => {
-      return <PortfolioManagerItem key={item.id} item={item} />;
-    });
   }
 
   componentDidMount() {
@@ -62,10 +59,9 @@ export default class PortfolioManager extends Component {
             handleFormSubmissionError={this.handleFormSubmissionError}
           />
         </div>
+
         <div className="right-column">
-          <div className="portfolio-manager-items-wrapper">
-            {this.renderPortfolioItems()}
-          </div>
+          <PortfolioManagerItem data={this.state.portfolioItems} />
         </div>
       </div>
     );

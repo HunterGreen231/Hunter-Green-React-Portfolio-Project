@@ -1,15 +1,17 @@
-import React from "react"
+import React from "react";
 
 export default function portfolioMangerItem(props) {
-    const { id, name, description, url, category, position, thumb_image_url, banner_image, logo} = props.item
-
+  const portfolioList = props.data.map(portfolioItem => {
     return (
-        <div className="portfolio-item-thumb">
-            <div className="portfolio-thumb-image">
-                <img src={thumb_image_url} />
-            </div>
-            <h2>{id}</h2>
-            <h1 className="title">{name}</h1>
+      <div key={portfolioItem.id} className="portfolio-item-thumb">
+        <div className="portfolio-thumb-img">
+          <img src={portfolioItem.thumb_image_url} />
         </div>
-    )
+        <h1 className="title">{portfolioItem.name}</h1>
+        <h2>{portfolioItem.id}</h2>
+      </div>
+    );
+  });
+
+  return <div className="portfolio-sidebar-list-wrapper">{portfolioList}</div>;
 }
