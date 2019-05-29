@@ -9,5 +9,32 @@
     .title {
       color: $offwhite;
     }
+
+    .title-trash-wrapper {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: space-between;
+
+      .title {
+        font-size: 1.5em;
+      }
+
+      .actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 15px;
+        .action-icon {
+          cursor: pointer;
+          color: $offwhite;
+          font-size: 1.5em;
+          transition: 0.5s ease-in-out;
+
+          &:hover {
+            color: $warning;
+          }
+        }
+      }
+    }
   }
 }
