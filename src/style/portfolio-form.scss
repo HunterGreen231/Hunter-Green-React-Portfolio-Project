@@ -8,21 +8,6 @@
   grid-template-columns: 1fr;
   padding: 42px;
 
-  .dropzone .dz-preview.dz-image-preview {
-    background-color: transparent;
-  }
-
-  .dz-remove {
-    text-decoration: none;
-    color: $warning;
-    transition: 0.5s ease-in-out;
-
-    &:hover {
-      letter-spacing: 1px;
-      text-decoration: none !important;
-    }
-  }
-
   .portfolio-manager-image-wrapper {
     img {
       width: 100%;
