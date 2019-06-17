@@ -62,7 +62,7 @@ export default class PortfolioContainer extends Component {
 
     return (
       <div className="homepage-wrapper">
-        <div className="filter-links">
+        {/* <div className="filter-links">
           <button
             className="btn"
             onClick={() => this.handleFilter("technology")}
@@ -87,7 +87,7 @@ export default class PortfolioContainer extends Component {
           >
             All
           </button>
-        </div>
+        </div> */}
         <div className="portfolio-items-wrapper">{this.portfolioItems()}</div>
       </div>
     );
