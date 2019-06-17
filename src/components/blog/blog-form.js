@@ -11,10 +11,10 @@ export default class BlogForm extends Component {
     this.state = {
       id: "",
       title: "",
-      blog_status: "",
+      blog_status: "draft",
       content: "",
       featured_image: "",
-      apiUrl: "https://jordan.devcamp.space/portfolio/portfolio_blogs",
+      apiUrl: "https://huntergreen.devcamp.space/portfolio/portfolio_blogs",
       apiAction: "post"
     };
 
@@ -54,7 +54,7 @@ export default class BlogForm extends Component {
         title: this.props.blog.title,
         blog_status: this.props.blog.blog_status,
         content: this.props.blog.content,
-        apiUrl: `https://jordan.devcamp.space/portfolio/portfolio_blogs/${
+        apiUrl: `https://huntergreen.devcamp.space/portfolio/portfolio_blogs/${
           this.props.blog.id
         }`,
         apiAction: "patch"
@@ -157,13 +157,14 @@ export default class BlogForm extends Component {
             value={this.state.title}
           />
 
-          <input
-            type="text"
-            onChange={this.handleChange}
+          <select
             name="blog_status"
-            placeholder="Blog status"
             value={this.state.blog_status}
-          />
+            onChange={this.handleChange}
+          >
+            <option value="draft">Draft</option>
+            <option value="published">Published</option>
+          </select>
         </div>
 
         <div className="one-column">
