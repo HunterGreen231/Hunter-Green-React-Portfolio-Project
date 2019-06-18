@@ -4,6 +4,13 @@
   grid-template-columns: 1fr 1fr;
   height: calc(100vh - 84px);
 
+  .left-column {
+    width: 80%;
+    height: 80%;
+    justify-self: center;
+    align-self: center;
+  }
+
   .right-column {
     display: flex;
     justify-content: center;
